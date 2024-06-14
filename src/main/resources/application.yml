@@ -1,0 +1,14 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: online-class
+  jpa:
+    properties:
+      hibernate:
+        ddl-auto: update
+        show-sql: true
+  output:
+    ansi:
+      enabled: always
