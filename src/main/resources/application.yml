@@ -4,11 +4,16 @@ server:
 spring:
   application:
     name: online-class
+  mvc:
+    servlet:
+      path: /api
   jpa:
     properties:
       hibernate:
         ddl-auto: update
         show-sql: true
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
   output:
     ansi:
       enabled: always
