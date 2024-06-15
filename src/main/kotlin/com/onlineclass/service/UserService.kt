@@ -5,9 +5,11 @@ import com.onlineclass.dto.UserDTO
 import com.onlineclass.dto.UserUpdateDTO
 import com.onlineclass.exception.ResourceNotFoundException
 import com.onlineclass.mapper.UserMapper
-import com.onlineclass.model.User
 import com.onlineclass.repository.UserRepository
+import io.github.oshai.kotlinlogging.KotlinLogging
 import org.springframework.stereotype.Service
+
+private val logger = KotlinLogging.logger {}
 
 @Service
 class UserService(
@@ -15,21 +17,19 @@ class UserService(
     private val userMapper: UserMapper
 ) {
 
-    fun getAll(): List<UserDTO> = userRepository.findAll().map { userMapper.toDTO(it) }
-
-    fun getById(id: Long): UserDTO = userMapper.toDTO(getUserEntityById(id))
-
     fun create(dto: UserCreateDTO): UserDTO {
         val user = userRepository.save(userMapper.toEntity(dto))
         return userMapper.toDTO(user)
     }
 
     fun update(dto: UserUpdateDTO, id: Long): UserDTO {
-        val user = getUserEntityById(id)
+        val user = userRepository.findById(id)
+            .orElseThrow {
+                val notFoundMessage = "User with id $id not found"
+                logger.info { notFoundMessage }
+                throw ResourceNotFoundException(notFoundMessage)
+            }
         userMapper.update(dto, user)
         return userMapper.toDTO(userRepository.save(user))
     }
-
-    private fun getUserEntityById(id: Long): User = userRepository.findById(id)
-        .orElseThrow { ResourceNotFoundException("User with id $id not found") }
 }

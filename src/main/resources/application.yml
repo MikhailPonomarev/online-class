@@ -4,6 +4,9 @@ server:
 spring:
   application:
     name: online-class
+  mvc:
+    servlet:
+      path: /api
   jpa:
     properties:
       hibernate:
