@@ -36,12 +36,14 @@ dependencies {
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.mapstruct:mapstruct:1.6.0.Beta1")
 	kapt("org.mapstruct:mapstruct-processor:1.6.0.Beta1")
-	implementation("org.openapitools:jackson-databind-nullable:0.2.6")
 	implementation("io.github.oshai:kotlin-logging-jvm:6.0.9")
-	runtimeOnly("com.h2database:h2")
+	implementation("net.datafaker:datafaker:2.0.1")
+	implementation("org.postgresql:postgresql:42.7.3")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+	testImplementation("org.instancio:instancio-junit:4.7.0")
+	testImplementation("net.javacrumbs.json-unit:json-unit-assertj:3.2.7")
 }
 
 kotlin {

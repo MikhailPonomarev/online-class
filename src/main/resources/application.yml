@@ -7,11 +7,14 @@ spring:
   mvc:
     servlet:
       path: /api
+  datasource:
+    url: jdbc:postgresql://localhost:5432/onlineclass
+    username: admin
+    password: admin
   jpa:
     properties:
       hibernate:
         ddl-auto: update
-        show-sql: true
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
         implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
   output:

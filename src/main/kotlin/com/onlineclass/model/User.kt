@@ -30,6 +30,10 @@ class User(
     @Column
     var dateOfBirth: LocalDate? = null,
 
+    @ManyToOne(targetEntity = Role::class)
+    @JoinColumn
+    var roleId: Int? = null,
+
     @CreatedDate
     var createdAt: LocalDate?,
 

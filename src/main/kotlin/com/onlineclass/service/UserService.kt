@@ -32,4 +32,10 @@ class UserService(
         userMapper.update(dto, user)
         return userMapper.toDTO(userRepository.save(user))
     }
+
+    fun assignRole(email: String, roleId: Int) {
+        val user = userRepository.findByEmail(email)
+        user.roleId = roleId
+        userRepository.save(user)
+    }
 }
