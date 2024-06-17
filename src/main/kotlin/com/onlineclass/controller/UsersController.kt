@@ -21,7 +21,7 @@ class UsersController(
 ) {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    fun create(@Valid @RequestBody dto: UserCreateDTO): UserDTO = userService.create(dto)
+    fun create(@Valid @RequestBody dto: UserCreateDTO): UserDTO = userService.save(dto)
 
     @PutMapping("{id}")
     fun update(@Valid @RequestBody dto: UserUpdateDTO, @PathVariable id: Long): UserDTO = userService.update(dto, id)

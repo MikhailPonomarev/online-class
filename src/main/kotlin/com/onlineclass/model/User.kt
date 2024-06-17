@@ -30,9 +30,9 @@ class User(
     @Column
     var dateOfBirth: LocalDate? = null,
 
-    @ManyToOne(targetEntity = Role::class)
-    @JoinColumn
-    var roleId: Int? = null,
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "role_id")
+    var role: Role? = null,
 
     @CreatedDate
     var createdAt: LocalDate?,
