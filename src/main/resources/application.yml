@@ -8,12 +8,14 @@ spring:
     servlet:
       path: /api
   datasource:
+    driver: org.postgresql.Driver
     url: jdbc:postgresql://localhost:5432/onlineclass
     username: admin
     password: admin
   jpa:
     properties:
       hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
         ddl-auto: update
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
         implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl

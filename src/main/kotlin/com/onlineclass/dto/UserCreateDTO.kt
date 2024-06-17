@@ -14,5 +14,8 @@ data class UserCreateDTO(
 
     @field:NotBlank
     @field:Size(min = 2)
-    val lastName: String
+    val lastName: String,
+
+    @field:NotBlank
+    val role: String
 )
